@@ -21,7 +21,7 @@
      th:classappend="${rowStat.count % 2 != 0 ? 'bg-light text-dark' : 'bg-secondary text-white'}">
     <div th:text="'1.'+ ${user.getFirstName() +' 2.'+  user.getLastName() }"/>
     <div th:text="' 3.'+ ${user.getEmail() + ' 4.'+user.getPassword()}"/>
-    <form  th:action="@{/users/{id}/edit(id=${user.getId()})}">
+    <form th:action="@{/users/{id}/edit(id=${user.getId()})}">
         <input type="submit" value="Edit"/>
     </form>
     <form th:method="DELETE" th:action="@{'/users/delete/' + ${user.getId()}}">

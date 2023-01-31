@@ -10,27 +10,21 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users")
 public class User {
-
-    private @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
     @Column(name = "name")
-
     private String firstName;
-
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "email")
     @Email(message = "Email should be valid")
     private String email;
-
     @Column(name = "password")
     @NotEmpty(message = "Password should not be empty")
     private String password;
 
     public User() {
-
     }
 
     public User(String firstName, String lastName, String email, String password) {

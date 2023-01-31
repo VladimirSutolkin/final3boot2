@@ -10,8 +10,7 @@ import java.util.List;
 
 
 @Repository
-public class UserRepositoryImpl implements UserRepository {
-
+public class DaoImpl implements Dao {
     @PersistenceContext
     private EntityManager entityManager;
 

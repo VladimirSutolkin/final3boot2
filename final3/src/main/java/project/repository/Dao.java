@@ -5,7 +5,7 @@ import project.model.User;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface Dao {
 
     List<User> getAllUsers();
 

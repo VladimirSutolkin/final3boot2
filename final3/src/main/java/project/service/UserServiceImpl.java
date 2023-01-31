@@ -4,23 +4,22 @@ package project.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.model.User;
-import project.repository.UserRepository;
+import project.repository.Dao;
 
 import java.util.List;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
+    private final Dao dao;
 
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(Dao dao) {
+        this.dao = dao;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.getAllUsers();
+        return dao.getAllUsers();
     }
 
     @Override
@@ -33,23 +32,23 @@ public class UserServiceImpl implements UserService {
     }
 
     private void createUser(User user) {
-        userRepository.createUser(user);
+        dao.createUser(user);
     }
 
     private void updateUser(User user) {
-        userRepository.updateUser(user);
+        dao.updateUser(user);
     }
 
     @Override
     public User readUser(long id) {
-        return userRepository.readUser(id);
+        return dao.readUser(id);
     }
 
     @Override
     public User deleteUser(long id) {
         User user = null;
         try {
-            user = userRepository.deleteUser(id);
+            user = dao.deleteUser(id);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
