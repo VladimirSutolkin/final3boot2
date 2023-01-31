@@ -6,7 +6,6 @@ import project.model.User;
 import java.util.List;
 
 public interface Dao {
-
     List<User> getAllUsers();
 
     void createUser(User user);
