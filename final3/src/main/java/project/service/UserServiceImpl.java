@@ -40,18 +40,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User readUser(long id) {
-        return userDao.readUser(id);
+    public User getUser(long id) {
+        return userDao.addUser(id);
     }
 
     @Override
-    public User deleteUser(long id) {
+    public void deleteUser(long id) {
         User user = null;
         try {
             user = userDao.deleteUser(id);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        return user;
+
     }
 }

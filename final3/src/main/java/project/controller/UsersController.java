@@ -21,7 +21,7 @@ public class UsersController {
     }
 
     @GetMapping({"", "/", "list"})
-    public String showAllUsers(Model model, @ModelAttribute("flashMessage") String flashAttribute) {
+    public String getAllUsers(Model model, @ModelAttribute("flashMessage") String flashAttribute) {
         model.addAttribute("users", userService.getAllUsers());
         return "list";
     }
@@ -33,12 +33,12 @@ public class UsersController {
 
     @GetMapping("/{id}/edit")
     public String edidtUserForm(@PathVariable(value = "id", required = true) long id, Model model, RedirectAttributes attributes) {
-        User user = userService.readUser(id);
+        User user = userService.getUser(id);
         if (null == user) {
             attributes.addFlashAttribute("flashMessage", "User are not exists!");
             return "redirect:/users";
         }
-        model.addAttribute("user", userService.readUser(id));
+        model.addAttribute("user", userService.getUser(id));
         return "form";
     }
 

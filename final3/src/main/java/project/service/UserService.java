@@ -9,9 +9,9 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    User readUser(long id);
+    User getUser(long id);
 
-    User deleteUser(long parseUnsignedInt);
+    void deleteUser(long parseUnsignedInt);
 
     void createOrUpdateUser(User user);
 }

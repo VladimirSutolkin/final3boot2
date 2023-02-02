@@ -13,6 +13,8 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+
+
     @Override
     public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
@@ -24,6 +26,13 @@ public class UserDaoImpl implements UserDao {
         entityManager.flush();
     }
 
+
+
+    @Override
+    public User addUser(long id) {
+        return entityManager.find(User.class, id);
+    }
+
     @Override
     public void updateUser(User user) {
         entityManager.merge(user);
@@ -31,18 +40,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User readUser(long id) {
-        return entityManager.find(User.class, id);
-    }
-
-    @Override
     public User deleteUser(long id) throws NullPointerException {
-        User user = readUser(id);
-        if (null == user) {
-            throw new NullPointerException("User not found");
-        }
+        User user = addUser(id);
         entityManager.remove(user);
-        entityManager.flush();
         return user;
     }
 }
